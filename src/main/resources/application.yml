@@ -48,3 +48,12 @@ spring:
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+# 接口文档
+springdoc:
+  packages-to-scan: com.yygnb.demo.controller
+  swagger-ui:
+    enabled: true
+doc-info:
+  title: SpringBoot Demo演示
+  description: 学习 Spring Boot 2.7.2
+

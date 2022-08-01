@@ -2,6 +2,7 @@ package com.yygnb.demo.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,6 +19,7 @@ import java.math.BigDecimal;
  * @author hero-yyg
  * @since 2022-07-26
  */
+@Schema(title = "电脑")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -29,18 +31,12 @@ public class Computer implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    /**
-     * 尺寸
-     */
+    @Schema(title = "尺寸")
     private BigDecimal size;
 
-    /**
-     * 操作系统
-     */
+    @Schema(title = "操作系统")
     private String operation;
 
-    /**
-     * 年份
-     */
+    @Schema(title = "年份")
     private String year;
 }
