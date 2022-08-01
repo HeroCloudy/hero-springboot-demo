@@ -42,6 +42,10 @@ spring:
           log-slow-sql: true
         config:
           enabled: true
+  liquibase:
+    enabled: true
+    drop-first: false
+    change-log: classpath:/db/changelog-master.xml
 
 
 # mybatis 日志

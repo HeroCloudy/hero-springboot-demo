@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <!--
+    1. id使用[任务ID]-[日期]-[作者]-[序号]，如 T100-20220801-yyg-001
+    2. 必须填写author
+    3. 所有 表、列 必须加remarks进行注释
+    4. 已经执行过的ChangeSet严禁修改
+    -->
+    <changeSet id="T100-20220801-yyg-001" author="yyg">
+        <createTable remarks="电脑" tableName="computer">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="size" remarks="尺寸" type="DECIMAL(4, 1)"/>
+            <column name="operation" remarks="操作系统" type="VARCHAR(32)"/>
+            <column name="year" remarks="年份" type="VARCHAR(4)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="T100-20220801-yyg-002" author="yyg">
+        <insert tableName="computer">
+            <column name="id" valueNumeric="1"/>
+            <column name="size" valueNumeric="16.0"/>
+            <column name="operation" value="MacOS"/>
+            <column name="year" value="2022"/>
+        </insert>
+        <insert tableName="computer">
+            <column name="id" valueNumeric="2"/>
+            <column name="size" valueNumeric="14.0"/>
+            <column name="operation" value="MacOS"/>
+            <column name="year" value="2022"/>
+        </insert>
+        <insert tableName="computer">
+            <column name="id" valueNumeric="3"/>
+            <column name="size" valueNumeric="15.6"/>
+            <column name="operation" value="MacOS"/>
+            <column name="year" value="2018"/>
+        </insert>
+        <insert tableName="computer">
+            <column name="id" valueNumeric="4"/>
+            <column name="size" valueNumeric="13.3"/>
+            <column name="operation" value="MacOS"/>
+            <column name="year" value="2018"/>
+        </insert>
+        <insert tableName="computer">
+            <column name="id" valueNumeric="5"/>
+            <column name="size" valueNumeric="15.6"/>
+            <column name="operation" value="MacOS"/>
+            <column name="year" value="2016"/>
+        </insert>
+        <insert tableName="computer">
+            <column name="id" valueNumeric="6"/>
+            <column name="size" valueNumeric="13.3"/>
+            <column name="operation" value="MacOS"/>
+            <column name="year" value="2016"/>
+        </insert>
+        <insert tableName="computer">
+            <column name="id" valueNumeric="7"/>
+            <column name="size" valueNumeric="14.0"/>
+            <column name="operation" value="Windows 10"/>
+            <column name="year" value="2022"/>
+        </insert>
+        <insert tableName="computer">
+            <column name="id" valueNumeric="8"/>
+            <column name="size" valueNumeric="13.0"/>
+            <column name="operation" value="Windows 10"/>
+            <column name="year" value="2020"/>
+        </insert>
+        <insert tableName="computer">
+            <column name="id" valueNumeric="9"/>
+            <column name="size" valueNumeric="11.0"/>
+            <column name="operation" value="Windows 10"/>
+            <column name="year" value="2018"/>
+        </insert>
+        <insert tableName="computer">
+            <column name="id" valueNumeric="10"/>
+            <column name="size" valueNumeric="14.0"/>
+            <column name="operation" value="Windows 8"/>
+            <column name="year" value="2022"/>
+        </insert>
+        <insert tableName="computer">
+            <column name="id" valueNumeric="11"/>
+            <column name="size" valueNumeric="13.0"/>
+            <column name="operation" value="Windows 8"/>
+            <column name="year" value="2020"/>
+        </insert>
+        <insert tableName="computer">
+            <column name="id" valueNumeric="12"/>
+            <column name="size" valueNumeric="11.0"/>
+            <column name="operation" value="Windows 8"/>
+            <column name="year" value="2018"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="T100-20220801-yyg-003" author="yyg">
+        <addColumn tableName="computer">
+            <column name="color" type="VARCHAR(8)" defaultValue="red" remarks="颜色"/>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

@@ -44,6 +44,10 @@
             <artifactId>druid-spring-boot-starter</artifactId>
             <version>${druid-spring-boot-starter.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.springdoc</groupId>
@@ -99,6 +103,26 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>4.9.1</version>
+                <configuration>
+                    <propertyFileWillOverride>true</propertyFileWillOverride>
+                    <outputChangeLogFile>temp/temp-changelog.xml</outputChangeLogFile>
+                    <driver>com.mysql.cj.jdbc.Driver</driver>
+                    <url>jdbc:mysql://127.0.0.1:3306/hero_springboot_demo?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=true</url>
+                    <username>root</username>
+                    <password>Mysql.123</password>
+                    <!--输出文件编码-->
+                    <outputFileEncoding>UTF-8</outputFileEncoding>
+                    <!--执行的时候是否显示详细的参数信息-->
+                    <verbose>true</verbose>
+                    <!--生成changelog文件内容-->
+                    <diffTypes>tables, views, columns, indexs,foreignkeys, primarykeys, uniqueconstraints, data</diffTypes>
+                </configuration>
             </plugin>
         </plugins>
     </build>
