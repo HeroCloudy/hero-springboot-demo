@@ -1,0 +1,63 @@
+server:
+  port: 9099
+
+publicKey: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJbNSKrc7/u341Tlhqva00JZsvtGfqTKkId4DBIKAoe4oQf5W/9svx4dnmf2ZXvI9aTeuttR8roAt+5Z7fz3TR0CAwEAAQ==
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/hero_springboot_demo?useUnicode=true&characterEncoding=utf8&useSSL=true
+    username: root
+    password: Uc8x6UuRTyaV7oMUCfd6Mz9kJdDi3eWtl5TBzQvspQyVHn2MS2vH6wTDlrb01n4tAgOKfZSO+ov8AlSCwN1yKw==
+    # 指定数据源为 DruidDataSource，默认值为 HikariDataSource
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      connection-properties: config.decrypt=true;config.decrypt.key=${publicKey}
+      initial-size: 5
+      min-idle: 5
+      max-active: 5
+      max-wait: 30000
+      time-between-eviction-runs-millis: 30000
+      min-evictable-idle-time-millis: 30000
+      validation-query: SELECT 1 FROM DUAL
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 5
+      filters: stat,wall
+      use-global-data-source-stat: true
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        login-username: admin
+        login-password: 111111
+      web-stat-filter:
+        enabled: true
+        url-pattern: /*
+        exclusions: /druid/*, *.js, *.jpeg, *.jpg, *.png, *.gif, *.css
+      filter:
+        stat:
+          merge-sql: true
+          slow-sql-millis: 3000
+          log-slow-sql: true
+        config:
+          enabled: true
+  liquibase:
+    enabled: true
+    drop-first: false
+    change-log: classpath:/db/changelog-master.xml
+
+
+# mybatis 日志
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+# 接口文档
+springdoc:
+  packages-to-scan: com.yygnb.demo.controller
+  swagger-ui:
+    enabled: true
+doc-info:
+  title: SpringBoot Demo演示
+  description: 学习 Spring Boot 2.7.2
+
