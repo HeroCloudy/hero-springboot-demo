@@ -27,7 +27,7 @@ public class SpringDocConfig {
     }
 
     @Bean
-    public OpenAPI springShopOpenAPI() {
+    public OpenAPI heroOpenAPI() {
         return new OpenAPI()
                 .info(new Info().title(docInfo.getTitle())
                         .description(docInfo.getDescription())
