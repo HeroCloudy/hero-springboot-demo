@@ -8,7 +8,11 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 /**
  * <p>
@@ -22,6 +26,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/computer")
+@Validated
 public class ComputerController {
 
     private final IComputerService computerService;
@@ -39,13 +44,13 @@ public class ComputerController {
             @Parameter(name = "size", description = "每页大小", example = "10")
     })
     @GetMapping("/find-page/{page}/{size}")
-    public Page<Computer> findPage(@PathVariable Integer page, @PathVariable Integer size) {
+    public Page<Computer> findPage(@PathVariable @Min(1) Integer page, @PathVariable @Max(10) Integer size) {
         return this.computerService.page(new Page<>(page, size));
     }
 
     @Operation(summary = "新增电脑")
     @PostMapping()
-    public Computer save(@RequestBody Computer computer) {
+    public Computer save(@RequestBody @Validated Computer computer) {
         computer.setId(null);
         this.computerService.save(computer);
         return computer;

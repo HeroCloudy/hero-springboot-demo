@@ -30,6 +30,14 @@
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
+        <!--
+        定义 Validator 以及 SmartValidator 接口, 提供了 hibernate-validator 包
+        提供 @Validated 支持 spring 环境,支持验证组的规范, 提供了一系列的工厂类以及适配器
+        -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>

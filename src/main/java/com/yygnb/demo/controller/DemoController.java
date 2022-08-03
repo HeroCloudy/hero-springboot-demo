@@ -1,5 +1,7 @@
 package com.yygnb.demo.controller;
 
+import com.yygnb.demo.common.exception.CommonException;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,21 +18,17 @@ import org.springframework.web.bind.annotation.RestController;
  * Date     UpdateBy        Description
  * 2022/7/26 00:28   dscloudy    Create File.
  */
+@Slf4j
 @RestController
 @RequestMapping("demo")
 public class DemoController {
 
-    private Logger logger = LoggerFactory.getLogger(DemoController.class);
-
     @GetMapping("hello")
     public String hello(String msg) {
         String result = "Hello Spring Boot ! " + msg;
-        System.out.println(result);
-        logger.error("error log");
-        logger.warn("warn log");
-        logger.info("info log");
-        logger.debug("debug log");
-        logger.trace("trace log");
+        if ("demo".equals(msg)) {
+            throw new CommonException("发生错误----这是自定义异常");
+        }
         return result;
     }
 }
