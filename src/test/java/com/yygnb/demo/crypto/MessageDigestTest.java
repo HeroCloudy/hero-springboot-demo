@@ -1,7 +1,7 @@
 package com.yygnb.demo.crypto;
 
+import com.yygnb.demo.utils.HexUtils;
 import org.junit.Test;
-import org.springframework.security.crypto.codec.Hex;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -11,7 +11,7 @@ public class MessageDigestTest {
     private String md(String input, String algorithm) throws Exception {
         MessageDigest md = MessageDigest.getInstance(algorithm);
         byte[] digest = md.digest(input.getBytes(StandardCharsets.UTF_8));
-        return new String(Hex.encode(digest));
+        return HexUtils.toHex(digest);
     }
 
     @Test
