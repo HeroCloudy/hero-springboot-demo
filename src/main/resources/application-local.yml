@@ -3,6 +3,18 @@ server:
 
 publicKey: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJbNSKrc7/u341Tlhqva00JZsvtGfqTKkId4DBIKAoe4oQf5W/9svx4dnmf2ZXvI9aTeuttR8roAt+5Z7fz3TR0CAwEAAQ==
 spring:
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    username:
+    password:
+    timeout: 5000
+    jedis:
+      pool:
+        max-active: 3
+        max-idle: 3
+        min-idle: 1
+        max-wait: -1
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/hero_springboot_demo?useUnicode=true&characterEncoding=utf8&useSSL=true
