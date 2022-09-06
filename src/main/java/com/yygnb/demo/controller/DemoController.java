@@ -1,6 +1,8 @@
 package com.yygnb.demo.controller;
 
 import com.yygnb.demo.common.exception.CommonException;
+import com.yygnb.demo.service.DemoService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,8 +22,11 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @Slf4j
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("demo")
 public class DemoController {
+
+    private final DemoService demoService;
 
     @GetMapping("hello")
     public String hello(String msg) {
@@ -30,5 +35,10 @@ public class DemoController {
             throw new CommonException("发生错误----这是自定义异常");
         }
         return result;
+    }
+
+    @GetMapping("async")
+    public void asyncDemo(String msg) {
+        demoService.send(msg);
     }
 }

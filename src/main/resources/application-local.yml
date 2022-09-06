@@ -72,4 +72,7 @@ springdoc:
 doc-info:
   title: SpringBoot Demo演示
   description: 学习 Spring Boot 2.7.2
-
+thread-pool:
+  core-pool-size: 3
+  max-pool-size: 5
+  thread-name-prefix: yyg-async-
