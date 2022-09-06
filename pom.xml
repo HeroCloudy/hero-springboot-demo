@@ -94,6 +94,29 @@
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!-- 监控 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <!-- 实战中该依赖只在独立的 Admin Server 中使用，此处仅为测试 -->
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-server</artifactId>
+            <version>2.7.4</version>
+        </dependency>
+        <!-- 实战中客户端也不需要添加该依赖，而是通过服务发现与注册，此处仅为测试 -->
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-client</artifactId>
+            <version>2.7.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -133,22 +156,22 @@
     </profiles>
 
     <build>
-    <resources>
-        <resource>
-            <directory>src/main/resources</directory>
-            <excludes>
-                <exclude>application-*.yml</exclude>
-            </excludes>
-        </resource>
-        <resource>
-            <directory>src/main/resources</directory>
-            <filtering>true</filtering>
-            <includes>
-                <include>application.yml</include>
-                <include>application-${env}*.yml</include>
-            </includes>
-        </resource>
-    </resources>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <excludes>
+                    <exclude>application-*.yml</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>application.yml</include>
+                    <include>application-${env}*.yml</include>
+                </includes>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -179,7 +202,8 @@
                     <!--执行的时候是否显示详细的参数信息-->
                     <verbose>true</verbose>
                     <!--生成changelog文件内容-->
-                    <diffTypes>tables, views, columns, indexs,foreignkeys, primarykeys, uniqueconstraints, data</diffTypes>
+                    <diffTypes>tables, views, columns, indexs,foreignkeys, primarykeys, uniqueconstraints, data
+                    </diffTypes>
                 </configuration>
             </plugin>
         </plugins>

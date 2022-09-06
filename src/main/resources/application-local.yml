@@ -3,6 +3,17 @@ server:
 
 publicKey: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJbNSKrc7/u341Tlhqva00JZsvtGfqTKkId4DBIKAoe4oQf5W/9svx4dnmf2ZXvI9aTeuttR8roAt+5Z7fz3TR0CAwEAAQ==
 spring:
+  application:
+    name: hero-springboot-demo
+  boot:
+    admin:
+      client:
+        url: 'http://localhost:9099/monitor'
+      context-path: '/monitor'
+  security:
+    user:
+      name: admin
+      password: 111111
   redis:
     host: 127.0.0.1
     port: 6379
@@ -76,3 +87,12 @@ thread-pool:
   core-pool-size: 3
   max-pool-size: 5
   thread-name-prefix: yyg-async-
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
